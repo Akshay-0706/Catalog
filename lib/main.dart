@@ -1,5 +1,7 @@
-import 'package:catalog/home.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/home.dart';
+import 'screens/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,8 +12,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Home(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      // home: Home(),
+      themeMode: ThemeMode.light,
+      theme: ThemeData(primarySwatch: Colors.green),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark, // Overriding primarySwatch
+        primarySwatch: Colors.blue,
+      ),
+      routes: {
+        "/": (context) => const Login(),
+        "/home": (context) => const Home(),
+        "/login": (context) => const Login()
+      },
     );
   }
 }
